@@ -13,10 +13,10 @@ services:
   backend:
     image: docker-compose-exercise-database
     environment:
-      MYSQL_ROOT_PASSWORD: example_root_password
+      MYSQL_ROOT_PASSWORD: "movie123"
       MYSQL_DATABASE: example_db
-      MYSQL_USER: example_user
-      MYSQL_PASSWORD: example_password
+      # MYSQL_USER: example_user
+      # MYSQL_PASSWORD: example_password
     build:
     # build from Dockerfile
       context: ./database
