@@ -1,0 +1,31 @@
+services:
+  frontend:
+    image: docker-compose-exercise-webapp
+    build:
+    # build from Dockerfile
+      context: ./webapp
+      dockerfile: Dockerfile
+    ports:
+     - "8080:80"
+    volumes:
+     - .:/code
+
+  backend:
+    image: docker-compose-exercise-database
+    environment:
+      MYSQL_ROOT_PASSWORD: example_root_password
+      MYSQL_DATABASE: example_db
+      MYSQL_USER: example_user
+      MYSQL_PASSWORD: example_password
+    build:
+    # build from Dockerfile
+      context: ./database
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
+    volumes:
+     - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
+    driver: local
